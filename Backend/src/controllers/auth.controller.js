@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model')
-const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
@@ -15,7 +14,7 @@ async function registerController (req,res){
         return res.status(409).json({
             message : "user already exist with"+(isUserAlreadyExist.email === email ? "this email" : "this username")
         })
-    }
+    } 
     const hash = await bcrypt.hash(password, 10)
     const user =await userModel.create({
         username,
@@ -87,7 +86,27 @@ async function loginController (req,res){
     })
 }
 
+async function getmePostController(req,res) {
+    const userId = req.user.id
+    const user = await userModel.findById(userId)
+     if (!user) {
+        return res.status(404).json({
+            message: "User not found"
+        })
+    }
+    return res.status(200).json({
+        message:"information fetched successfully",
+       user:{
+        username:user.username,
+        email:user.email,
+        bio:user.bio,
+        profile_image:user.profile_image
+       }
+    })
+}
+
 module.exports= {
     registerController,
-    loginController
+    loginController,
+    getmePostController
 }

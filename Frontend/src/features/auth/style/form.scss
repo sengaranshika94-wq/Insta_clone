@@ -1,0 +1,35 @@
+@mixin flex-column($gap){
+    display: flex;
+    flex-direction: column;
+    gap:$gap
+}
+
+main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-container{
+        @include flex-column(1.4rem);
+        min-width: 550px;
+        h1{
+            font-size: 3rem;
+        }
+        form{
+            @include flex-column(1.3rem);
+            input{
+               border: none;
+               outline: none;
+               padding-inline: 1rem; 
+               padding-block: 0.75rem;
+               font-size: 1.5rem;
+               border-radius: 1.2rem;
+            }
+        }
+        p{
+            font-size: 1.5rem;
+        }
+    }
+}
