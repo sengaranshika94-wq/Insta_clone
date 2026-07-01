@@ -50,10 +50,15 @@ async function loginController (req,res){
     const {username,password,email}= req.body
     const user = await userModel.findOne({
         $or:[
-            {username},
-            {email}
+            {
+                username : username
+            },
+            {
+                email: email
+            }
         ]
-    })
+    }).select('+password') //will select the password field from the database even if it is set to select:false in the schema
+    
    if(!user){
     return res.status(404).json({
         message: "user not found"

@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
     },
     password : {
         type:String,
-        required: [true, "password is required"]
+        required: [true, "password is required"],
+        select: false
     },
     bio: String,
     profile_image: {
