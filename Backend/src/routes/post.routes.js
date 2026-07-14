@@ -34,6 +34,13 @@ postRouter.get('/details/:postId',identifyUser,postController.getPostDetailsCont
 postRouter.post('/like/:postId',identifyUser,postController.likePostController)
 
 /**
+ * @route POST /api/posts/unlike/:postId
+ * @desc unLike a post
+ * @access Private
+ */
+postRouter.post('/unlike/:postId',identifyUser,postController.unlikePostController)
+
+/**
  * @route GET /api/posts/feed
  * @description get all the post created in the Db
  * @access Private

@@ -13,7 +13,7 @@ main {
     padding: 1rem;
 
     .form-container {
-        @include flex-column(1.2rem);
+        @include flex-column(1rem);
         width: 100%;
         max-width: 450px;
 
@@ -23,14 +23,14 @@ main {
         }
 
         form {
-            @include flex-column(1rem);
+            @include flex-column(0.75rem);
 
             input {
                 border: 1px solid #ccc;
                 outline: none;
                 padding: 0.85rem 1rem;
                 font-size: 1rem;
-                border-radius: 0.8rem;
+                border-radius: 1rem;
 
                 &:focus {
                     border-color: #646cff;
@@ -40,7 +40,7 @@ main {
             button {
                 padding: 0.85rem;
                 font-size: 1rem;
-                border-radius: 0.8rem;
+                border-radius: 1rem;
                 border: none;
                 cursor: pointer;
             }
